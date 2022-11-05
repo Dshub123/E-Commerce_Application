@@ -1,0 +1,2180 @@
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 49
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from a;
+Empty set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> delete from a where c1 = 1;
+ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
+mysql> delete from a where c1 = 1;
+Query OK, 0 rows affected (8.19 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    2 |
++------+
+1 row in set (0.00 sec)
+
+mysql> delete from a where c1 = 2;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
+Empty set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc b;
+ERROR 1146 (42S02): Table 'db2.b' doesn't exist
+mysql> select * from b;
+ERROR 1146 (42S02): Table 'db2.b' doesn't exist
+mysql> use information_schema;
+Database changed
+mysql> desc tables;
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| Field           | Type                                                               | Null | Key | Default | Extra |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| TABLE_CATALOG   | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_SCHEMA    | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_NAME      | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_TYPE      | enum('BASE TABLE','VIEW','SYSTEM VIEW')                            | NO   |     | NULL    |       |
+| ENGINE          | varchar(64)                                                        | YES  |     | NULL    |       |
+| VERSION         | int                                                                | YES  |     | NULL    |       |
+| ROW_FORMAT      | enum('Fixed','Dynamic','Compressed','Redundant','Compact','Paged') | YES  |     | NULL    |       |
+| TABLE_ROWS      | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AVG_ROW_LENGTH  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_LENGTH     | bigint unsigned                                                    | YES  |     | NULL    |       |
+| MAX_DATA_LENGTH | bigint unsigned                                                    | YES  |     | NULL    |       |
+| INDEX_LENGTH    | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_FREE       | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AUTO_INCREMENT  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| CREATE_TIME     | timestamp                                                          | NO   |     | NULL    |       |
+| UPDATE_TIME     | datetime                                                           | YES  |     | NULL    |       |
+| CHECK_TIME      | datetime                                                           | YES  |     | NULL    |       |
+| TABLE_COLLATION | varchar(64)                                                        | YES  |     | NULL    |       |
+| CHECKSUM        | bigint                                                             | YES  |     | NULL    |       |
+| CREATE_OPTIONS  | varchar(256)                                                       | YES  |     | NULL    |       |
+| TABLE_COMMENT   | text                                                               | YES  |     | NULL    |       |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+21 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ADMINISTRABLE_ROLE_AUTHORIZATIONS     |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        |
+| CHECK_CONSTRAINTS                     |
+| COLLATION_CHARACTER_SET_APPLICABILITY |
+| COLLATIONS                            |
+| COLUMN_PRIVILEGES                     |
+| COLUMN_STATISTICS                     |
+| COLUMNS                               |
+| COLUMNS_EXTENSIONS                    |
+| ENABLED_ROLES                         |
+| ENGINES                               |
+| EVENTS                                |
+| FILES                                 |
+| INNODB_BUFFER_PAGE                    |
+| INNODB_BUFFER_PAGE_LRU                |
+| INNODB_BUFFER_POOL_STATS              |
+| INNODB_CACHED_INDEXES                 |
+| INNODB_CMP                            |
+| INNODB_CMP_PER_INDEX                  |
+| INNODB_CMP_PER_INDEX_RESET            |
+| INNODB_CMP_RESET                      |
+| INNODB_CMPMEM                         |
+| INNODB_CMPMEM_RESET                   |
+| INNODB_COLUMNS                        |
+| INNODB_DATAFILES                      |
+| INNODB_FIELDS                         |
+| INNODB_FOREIGN                        |
+| INNODB_FOREIGN_COLS                   |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_FT_CONFIG                      |
+| INNODB_FT_DEFAULT_STOPWORD            |
+| INNODB_FT_DELETED                     |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_INDEXES                        |
+| INNODB_METRICS                        |
+| INNODB_SESSION_TEMP_TABLESPACES       |
+| INNODB_TABLES                         |
+| INNODB_TABLESPACES                    |
+| INNODB_TABLESPACES_BRIEF              |
+| INNODB_TABLESTATS                     |
+| INNODB_TEMP_TABLE_INFO                |
+| INNODB_TRX                            |
+| INNODB_VIRTUAL                        |
+| KEY_COLUMN_USAGE                      |
+| KEYWORDS                              |
+| OPTIMIZER_TRACE                       |
+| PARAMETERS                            |
+| PARTITIONS                            |
+| PLUGINS                               |
+| PROCESSLIST                           |
+| PROFILING                             |
+| REFERENTIAL_CONSTRAINTS               |
+| RESOURCE_GROUPS                       |
+| ROLE_COLUMN_GRANTS                    |
+| ROLE_ROUTINE_GRANTS                   |
+| ROLE_TABLE_GRANTS                     |
+| ROUTINES                              |
+| SCHEMA_PRIVILEGES                     |
+| SCHEMATA                              |
+| SCHEMATA_EXTENSIONS                   |
+| ST_GEOMETRY_COLUMNS                   |
+| ST_SPATIAL_REFERENCE_SYSTEMS          |
+| ST_UNITS_OF_MEASURE                   |
+| STATISTICS                            |
+| TABLE_CONSTRAINTS                     |
+| TABLE_CONSTRAINTS_EXTENSIONS          |
+| TABLE_PRIVILEGES                      |
+| TABLES                                |
+| TABLES_EXTENSIONS                     |
+| TABLESPACES                           |
+| TABLESPACES_EXTENSIONS                |
+| TRIGGERS                              |
+| USER_ATTRIBUTES                       |
+| USER_PRIVILEGES                       |
+| VIEW_ROUTINE_USAGE                    |
+| VIEW_TABLE_USAGE                      |
+| VIEWS                                 |
++---------------------------------------+
+79 rows in set (0.00 sec)
+
+mysql> desc INNODB_TABLES
+    -> ;
++--------------------+-----------------+------+-----+---------+-------+
+| Field              | Type            | Null | Key | Default | Extra |
++--------------------+-----------------+------+-----+---------+-------+
+| TABLE_ID           | bigint unsigned | NO   |     |         |       |
+| NAME               | varchar(655)    | NO   |     |         |       |
+| FLAG               | int             | NO   |     |         |       |
+| N_COLS             | int             | NO   |     |         |       |
+| SPACE              | bigint          | NO   |     |         |       |
+| ROW_FORMAT         | varchar(12)     | YES  |     |         |       |
+| ZIP_PAGE_SIZE      | int unsigned    | NO   |     |         |       |
+| SPACE_TYPE         | varchar(10)     | YES  |     |         |       |
+| INSTANT_COLS       | int             | NO   |     |         |       |
+| TOTAL_ROW_VERSIONS | int             | NO   |     |         |       |
++--------------------+-----------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+
+C:\Users\IET>mysql --host=localhost --port=3306 --user=abc --password=abc db2
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1044 (42000): Access denied for user 'abc'@'localhost' to database 'db2'
+
+C:\Users\IET>mysql --host=localhost --port=3306 --user=abc --password=abc db2
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1044 (42000): Access denied for user 'abc'@'%' to database 'db2'
+
+C:\Users\IET>mysql --host=localhost --port=3306 --user=abc --password=abc
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 54
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> exit
+Bye
+
+C:\Users\IET>mysql --host=localhost --port=3306 --user=abc --password=abc db2
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1044 (42000): Access denied for user 'abc'@'%' to database 'db2'
+
+C:\Users\IET>mysql --host=localhost --port=3306 --user=abc --password=abc
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 56
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db2                |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use db2;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| dept          |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
+| dept          |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a values(3);
+ERROR 1142 (42000): INSERT command denied to user 'abc'@'localhost' for table 'a'
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a values(3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
+|    3 |
++------+
+3 rows in set (0.00 sec)
+
+mysql> commit;'
+Query OK, 0 rows affected (0.07 sec)
+
+    '> ^C
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into a values(4);
+ERROR 1142 (42000): INSERT command denied to user 'abc'@'localhost' for table 'a'
+mysql>
+
+
+
+----------------------------
+
+
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 51
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> desc b;
+ERROR 1146 (42S02): Table 'db2.b' doesn't exist
+mysql> create temporary table b(c1 int primary key);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create temporary table c(c1 int primary key auto_increment);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    | NULL  |
++-------+------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> desc c;
++-------+------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra          |
++-------+------+------+-----+---------+----------------+
+| c1    | int  | NO   | PRI | NULL    | auto_increment |
++-------+------+------+-----+---------+----------------+
+1 row in set (0.00 sec)
+
+mysql> create user 'abc'@'localhost' identified by 'abc';
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> set @u = 'xyz';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @u;
++------+
+| @u   |
++------+
+| xyz  |
++------+
+1 row in set (0.00 sec)
+
+mysql> create user @u@'localhost' identified by 'abc';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@u@'localhost' identified by 'abc'' at line 1
+mysql> use sys;
+Database changed
+mysql> show tble;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tble' at line 1
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++-----------------------------------------------+
+| Tables_in_sys                                 |
++-----------------------------------------------+
+| host_summary                                  |
+| host_summary_by_file_io                       |
+| host_summary_by_file_io_type                  |
+| host_summary_by_stages                        |
+| host_summary_by_statement_latency             |
+| host_summary_by_statement_type                |
+| innodb_buffer_stats_by_schema                 |
+| innodb_buffer_stats_by_table                  |
+| innodb_lock_waits                             |
+| io_by_thread_by_latency                       |
+| io_global_by_file_by_bytes                    |
+| io_global_by_file_by_latency                  |
+| io_global_by_wait_by_bytes                    |
+| io_global_by_wait_by_latency                  |
+| latest_file_io                                |
+| memory_by_host_by_current_bytes               |
+| memory_by_thread_by_current_bytes             |
+| memory_by_user_by_current_bytes               |
+| memory_global_by_current_bytes                |
+| memory_global_total                           |
+| metrics                                       |
+| processlist                                   |
+| ps_check_lost_instrumentation                 |
+| schema_auto_increment_columns                 |
+| schema_index_statistics                       |
+| schema_object_overview                        |
+| schema_redundant_indexes                      |
+| schema_table_lock_waits                       |
+| schema_table_statistics                       |
+| schema_table_statistics_with_buffer           |
+| schema_tables_with_full_table_scans           |
+| schema_unused_indexes                         |
+| session                                       |
+| session_ssl_status                            |
+| statement_analysis                            |
+| statements_with_errors_or_warnings            |
+| statements_with_full_table_scans              |
+| statements_with_runtimes_in_95th_percentile   |
+| statements_with_sorting                       |
+| statements_with_temp_tables                   |
+| sys_config                                    |
+| user_summary                                  |
+| user_summary_by_file_io                       |
+| user_summary_by_file_io_type                  |
+| user_summary_by_stages                        |
+| user_summary_by_statement_latency             |
+| user_summary_by_statement_type                |
+| version                                       |
+| wait_classes_global_by_avg_latency            |
+| wait_classes_global_by_latency                |
+| waits_by_host_by_latency                      |
+| waits_by_user_by_latency                      |
+| waits_global_by_latency                       |
+| x$host_summary                                |
+| x$host_summary_by_file_io                     |
+| x$host_summary_by_file_io_type                |
+| x$host_summary_by_stages                      |
+| x$host_summary_by_statement_latency           |
+| x$host_summary_by_statement_type              |
+| x$innodb_buffer_stats_by_schema               |
+| x$innodb_buffer_stats_by_table                |
+| x$innodb_lock_waits                           |
+| x$io_by_thread_by_latency                     |
+| x$io_global_by_file_by_bytes                  |
+| x$io_global_by_file_by_latency                |
+| x$io_global_by_wait_by_bytes                  |
+| x$io_global_by_wait_by_latency                |
+| x$latest_file_io                              |
+| x$memory_by_host_by_current_bytes             |
+| x$memory_by_thread_by_current_bytes           |
+| x$memory_by_user_by_current_bytes             |
+| x$memory_global_by_current_bytes              |
+| x$memory_global_total                         |
+| x$processlist                                 |
+| x$ps_digest_95th_percentile_by_avg_us         |
+| x$ps_digest_avg_latency_distribution          |
+| x$ps_schema_table_statistics_io               |
+| x$schema_flattened_keys                       |
+| x$schema_index_statistics                     |
+| x$schema_table_lock_waits                     |
+| x$schema_table_statistics                     |
+| x$schema_table_statistics_with_buffer         |
+| x$schema_tables_with_full_table_scans         |
+| x$session                                     |
+| x$statement_analysis                          |
+| x$statements_with_errors_or_warnings          |
+| x$statements_with_full_table_scans            |
+| x$statements_with_runtimes_in_95th_percentile |
+| x$statements_with_sorting                     |
+| x$statements_with_temp_tables                 |
+| x$user_summary                                |
+| x$user_summary_by_file_io                     |
+| x$user_summary_by_file_io_type                |
+| x$user_summary_by_stages                      |
+| x$user_summary_by_statement_latency           |
+| x$user_summary_by_statement_type              |
+| x$wait_classes_global_by_avg_latency          |
+| x$wait_classes_global_by_latency              |
+| x$waits_by_host_by_latency                    |
+| x$waits_by_user_by_latency                    |
+| x$waits_global_by_latency                     |
++-----------------------------------------------+
+101 rows in set (0.04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| a                  |
+| dac100             |
+| dac101             |
+| dac102             |
+| dac103             |
+| dac104             |
+| dac105             |
+| dac106             |
+| dac107             |
+| dac108             |
+| dac109             |
+| dac110             |
+| dac111             |
+| dac112             |
+| dac113             |
+| dac114             |
+| dac115             |
+| dac116             |
+| dac117             |
+| dac118             |
+| dac119             |
+| dac12              |
+| dac120             |
+| dac14              |
+| dac15              |
+| dac16              |
+| dac17              |
+| dac18              |
+| dac2               |
+| dac20              |
+| dac21              |
+| dac22              |
+| dac23              |
+| dac24              |
+| dac25              |
+| dac26              |
+| dac27              |
+| dac28              |
+| dac29              |
+| dac30              |
+| dac31              |
+| dac32              |
+| dac34              |
+| dac35              |
+| dac37              |
+| dac38              |
+| dac39              |
+| dac41              |
+| dac42              |
+| dac43              |
+| dac44              |
+| dac45              |
+| dac46              |
+| dac47              |
+| dac48              |
+| dac49              |
+| dac5               |
+| dac50              |
+| dac51              |
+| dac52              |
+| dac53              |
+| dac54              |
+| dac55              |
+| dac56              |
+| dac57              |
+| dac58              |
+| dac59              |
+| dac60              |
+| dac61              |
+| dac62              |
+| dac63              |
+| dac64              |
+| dac65              |
+| dac66              |
+| dac67              |
+| dac68              |
+| dac69              |
+| dac7               |
+| dac70              |
+| dac71              |
+| dac72              |
+| dac73              |
+| dac74              |
+| dac75              |
+| dac76              |
+| dac77              |
+| dac78              |
+| dac79              |
+| dac80              |
+| dac81              |
+| dac82              |
+| dac83              |
+| dac84              |
+| dac85              |
+| dac86              |
+| dac87              |
+| dac88              |
+| dac89              |
+| dac9               |
+| dac90              |
+| dac91              |
+| dac92              |
+| dac93              |
+| dac94              |
+| dac95              |
+| dac96              |
+| dac97              |
+| dac98              |
+| dac99              |
+| db1                |
+| db2                |
+| information_schema |
+| jamesbond007       |
+| mysql              |
+| pc37               |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+119 rows in set (0.00 sec)
+
+mysql> use mysql;
+Database changed
+mysql> show tables;
++------------------------------------------------------+
+| Tables_in_mysql                                      |
++------------------------------------------------------+
+| columns_priv                                         |
+| component                                            |
+| db                                                   |
+| default_roles                                        |
+| engine_cost                                          |
+| func                                                 |
+| general_log                                          |
+| global_grants                                        |
+| gtid_executed                                        |
+| help_category                                        |
+| help_keyword                                         |
+| help_relation                                        |
+| help_topic                                           |
+| innodb_index_stats                                   |
+| innodb_table_stats                                   |
+| password_history                                     |
+| plugin                                               |
+| procs_priv                                           |
+| proxies_priv                                         |
+| replication_asynchronous_connection_failover         |
+| replication_asynchronous_connection_failover_managed |
+| replication_group_configuration_version              |
+| replication_group_member_actions                     |
+| role_edges                                           |
+| server_cost                                          |
+| servers                                              |
+| slave_master_info                                    |
+| slave_relay_log_info                                 |
+| slave_worker_info                                    |
+| slow_log                                             |
+| tables_priv                                          |
+| time_zone                                            |
+| time_zone_leap_second                                |
+| time_zone_name                                       |
+| time_zone_transition                                 |
+| time_zone_transition_type                            |
+| user                                                 |
++------------------------------------------------------+
+37 rows in set (0.00 sec)
+
+mysql> desc user;
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Field                    | Type                              | Null | Key | Default               | Extra |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Host                     | char(255)                         | NO   | PRI |                       |       |
+| User                     | char(32)                          | NO   | PRI |                       |       |
+| Select_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Insert_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Update_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Delete_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Reload_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Shutdown_priv            | enum('N','Y')                     | NO   |     | N                     |       |
+| Process_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| File_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Grant_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| References_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Index_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_db_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Super_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tmp_table_priv    | enum('N','Y')                     | NO   |     | N                     |       |
+| Lock_tables_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Execute_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_slave_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_client_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_view_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_view_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_routine_priv      | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_routine_priv       | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_user_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Event_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Trigger_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tablespace_priv   | enum('N','Y')                     | NO   |     | N                     |       |
+| ssl_type                 | enum('','ANY','X509','SPECIFIED') | NO   |     |                       |       |
+| ssl_cipher               | blob                              | NO   |     | NULL                  |       |
+| x509_issuer              | blob                              | NO   |     | NULL                  |       |
+| x509_subject             | blob                              | NO   |     | NULL                  |       |
+| max_questions            | int unsigned                      | NO   |     | 0                     |       |
+| max_updates              | int unsigned                      | NO   |     | 0                     |       |
+| max_connections          | int unsigned                      | NO   |     | 0                     |       |
+| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |
+| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |
+| authentication_string    | text                              | YES  |     | NULL                  |       |
+| password_expired         | enum('N','Y')                     | NO   |     | N                     |       |
+| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |
+| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |
+| account_locked           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_role_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_role_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_require_current | enum('N','Y')                     | YES  |     | NULL                  |       |
+| User_attributes          | json                              | YES  |     | NULL                  |       |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+51 rows in set (0.02 sec)
+
+mysql> select User from user;
++------------------+
+| User             |
++------------------+
+| dac1             |
+| dac10            |
+| dac100           |
+| dac101           |
+| dac102           |
+| dac103           |
+| dac104           |
+| dac105           |
+| dac106           |
+| dac107           |
+| dac108           |
+| dac109           |
+| dac11            |
+| dac110           |
+| dac111           |
+| dac112           |
+| dac113           |
+| dac114           |
+| dac115           |
+| dac116           |
+| dac117           |
+| dac118           |
+| dac119           |
+| dac12            |
+| dac120           |
+| dac13            |
+| dac14            |
+| dac15            |
+| dac16            |
+| dac17            |
+| dac18            |
+| dac19            |
+| dac2             |
+| dac20            |
+| dac21            |
+| dac22            |
+| dac23            |
+| dac24            |
+| dac25            |
+| dac26            |
+| dac27            |
+| dac28            |
+| dac29            |
+| dac3             |
+| dac30            |
+| dac31            |
+| dac32            |
+| dac33            |
+| dac34            |
+| dac35            |
+| dac36            |
+| dac37            |
+| dac38            |
+| dac39            |
+| dac4             |
+| dac40            |
+| dac41            |
+| dac42            |
+| dac43            |
+| dac44            |
+| dac45            |
+| dac46            |
+| dac47            |
+| dac48            |
+| dac49            |
+| dac5             |
+| dac50            |
+| dac51            |
+| dac52            |
+| dac53            |
+| dac54            |
+| dac55            |
+| dac56            |
+| dac57            |
+| dac58            |
+| dac59            |
+| dac6             |
+| dac60            |
+| dac61            |
+| dac62            |
+| dac63            |
+| dac64            |
+| dac65            |
+| dac66            |
+| dac67            |
+| dac68            |
+| dac69            |
+| dac7             |
+| dac70            |
+| dac71            |
+| dac72            |
+| dac73            |
+| dac74            |
+| dac75            |
+| dac76            |
+| dac77            |
+| dac78            |
+| dac79            |
+| dac8             |
+| dac80            |
+| dac81            |
+| dac82            |
+| dac83            |
+| dac84            |
+| dac85            |
+| dac86            |
+| dac87            |
+| dac88            |
+| dac89            |
+| dac9             |
+| dac90            |
+| dac91            |
+| dac92            |
+| dac93            |
+| dac94            |
+| dac95            |
+| dac96            |
+| dac97            |
+| dac98            |
+| dac99            |
+| saleel           |
+| abc              |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+126 rows in set (0.00 sec)
+
+mysql> use db2;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> create table dept as select * from db1.dept;
+Query OK, 5 rows affected (0.35 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> drop user 'abc'@'localhost';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create user 'abc'@'%' identified by 'abc';
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| db2        |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
+| dept          |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
++--------+------------+----------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> grant select on db2.dept to 'abc'@'%';
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tbles;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tbles' at line 1
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
+| dept          |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> grant select on db2.a to 'abc'@'%';
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from a;
+Empty set (0.00 sec)
+
+mysql> insert into a value (1),(2);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> commitl;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commitl' at line 1
+mysql> commit;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant select, insert on db2.a to 'abc'@'%';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from a;
++------+
+| c1   |
++------+
+|    1 |
+|    2 |
+|    3 |
++------+
+3 rows in set (0.00 sec)
+
+mysql> revoke insert on db2.a from 'abc'@'%';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create view v1 as select * from dept;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
+| dept          |
+| v1            |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> show full tables;
++---------------+------------+
+| Tables_in_db2 | Table_type |
++---------------+------------+
+| a             | BASE TABLE |
+| dept          | BASE TABLE |
+| v1            | VIEW       |
++---------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from v1;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
++--------+------------+----------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc v1;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into dept  values(1,1,1,1,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
+|      1 | 1          | 1        | 1          | 1          |
++--------+------------+----------+------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from v1;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
+|      1 | 1          | 1        | 1          | 1          |
++--------+------------+----------+------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into v1(2,2,2,2,2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2,2,2,2,2)' at line 1
+mysql> insert into v1 values (2,2,2,2,2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from v1;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
+|      1 | 1          | 1        | 1          | 1          |
+|      2 | 2          | 2        | 2          | 2          |
++--------+------------+----------+------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
+|      1 | 1          | 1        | 1          | 1          |
+|      2 | 2          | 2        | 2          | 2          |
++--------+------------+----------+------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> alter table dept add c1 int;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
+| c1        | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table v1 add c1 int;
+ERROR 1347 (HY000): 'db2.v1' is not BASE TABLE
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
+| c1        | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc v1;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from v1;
++--------+------------+----------+------------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        | STARTEDON  |
++--------+------------+----------+------------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     | 24/03/1989 |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  | 12/04/1989 |
+|     30 | SALES      | CHICAGO  | sales@2017 | 13/04/1989 |
+|     40 | OPERATIONS | BOSTON   | opr@123    | 12/07/1989 |
+|     50 | HR         | PUNE     | PUN@8877   | 22/12/1989 |
+|      1 | 1          | 1        | 1          | 1          |
+|      2 | 2          | 2        | 2          | 2          |
++--------+------------+----------+------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| DEPTNO    | int         | NO   |     | NULL    |       |
+| DNAME     | varchar(12) | YES  |     | NULL    |       |
+| LOC       | varchar(10) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| STARTEDON | varchar(10) | YES  |     | NULL    |       |
+| c1        | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table dept drop c1, drop STARTEDON;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dept;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(12) | YES  |     | NULL    |       |
+| LOC    | varchar(10) | YES  |     | NULL    |       |
+| PWD    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc v1;
+ERROR 1356 (HY000): View 'db2.v1' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql> create view v2 as select * from dept;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql>
+mysql> show create view v1;
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                                                                                                                    | character_set_client | collation_connection |
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v1   | CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v1` AS select `dept`.`DEPTNO` AS `DEPTNO`,`dept`.`DNAME` AS `DNAME`,`dept`.`LOC` AS `LOC`,`dept`.`PWD` AS `PWD`,`dept`.`STARTEDON` AS `STARTEDON` from `dept` | cp850                | cp850_general_ci     |
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> show create view v2;
++------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                                                                                  | character_set_client | collation_connection |
++------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v2   | CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v2` AS select `dept`.`DEPTNO` AS `DEPTNO`,`dept`.`DNAME` AS `DNAME`,`dept`.`LOC` AS `LOC`,`dept`.`PWD` AS `PWD` from `dept` | cp850                | cp850_general_ci     |
++------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc v2;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(12) | YES  |     | NULL    |       |
+| LOC    | varchar(10) | YES  |     | NULL    |       |
+| PWD    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create view v1;
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                                                                                                                    | character_set_client | collation_connection |
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v1   | CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v1` AS select `dept`.`DEPTNO` AS `DEPTNO`,`dept`.`DNAME` AS `DNAME`,`dept`.`LOC` AS `LOC`,`dept`.`PWD` AS `PWD`,`dept`.`STARTEDON` AS `STARTEDON` from `dept` | cp850                | cp850_general_ci     |
++------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> desc v1;
+ERROR 1356 (HY000): View 'db2.v1' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql> desc dept;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(12) | YES  |     | NULL    |       |
+| LOC    | varchar(10) | YES  |     | NULL    |       |
+| PWD    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc v2;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(12) | YES  |     | NULL    |       |
+| LOC    | varchar(10) | YES  |     | NULL    |       |
+| PWD    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table d (c1 int, c2 int);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> insert into d values(1,1),(2,2),(3,3);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from d;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 |    1 |
+|    2 |    2 |
+|    3 |    3 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> create view v3 as select * from d;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from v3;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 |    1 |
+|    2 |    2 |
+|    3 |    3 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> drop table d;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc v3;
+ERROR 1356 (HY000): View 'db2.v3' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql> show full tbles;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tbles' at line 1
+mysql> show full tables;
++---------------+------------+
+| Tables_in_db2 | Table_type |
++---------------+------------+
+| a             | BASE TABLE |
+| dept          | BASE TABLE |
+| v1            | VIEW       |
+| v2            | VIEW       |
+| v3            | VIEW       |
++---------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> desc v3;
+ERROR 1356 (HY000): View 'db2.v3' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql> create table d (c1 int, c2 int);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into d values(1,1),(2,2),(3,3);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from v3;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 |    1 |
+|    2 |    2 |
+|    3 |    3 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> drop table d;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> select * from v3;
+ERROR 1356 (HY000): View 'db2.v3' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql> create table d (c1 int, c2 int, c3 int);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> select * from v3;
+Empty set (0.00 sec)
+
+mysql> desc v3;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> use db1;
+Database changed
+mysql> select * from emp;
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+| EMPNO | ENAME    | GENDER | JOB                 | MGR  | HIREDATE   | SAL  | COMM | DEPTNO | BONUSID | USER NAME    | PWD        | PHONE      | isActive |
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+|  6001 | GITA     | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     30 |       1 | GITA         | sales@2017 | NULL       |        1 |
+|  6129 | VRUSHALI | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | VRUSHALI     | PUN@8877   | NULL       |        1 |
+|  6473 | SHARMIN  | F      | Public Relation     | 7920 | 1981-07-19 | 1750 | NULL |     20 |       1 | SHARMIN      | a12recmpm  | NULL       |        1 |
+|  6781 | BANDISH  | F      | Public Relation     | 7920 | 1981-07-19 | 1750 | NULL |     20 |       1 | BANDISH      | a12recmpm  | NULL       |        1 |
+|  7369 | SMITH    | M      | CLERK               | 7902 | 1980-12-17 |  800 | NULL |     20 |       2 | TRITONE      | a12recmpm  | 7032300023 |        0 |
+|  7415 | AARAV    | M      | CLERK               | 7902 | 1981-12-31 | 3350 | NULL |     10 |    NULL | AARAV        | NULL       | 7032300084 |        0 |
+|  7421 | THOMAS   | M      | CLERK               | 7920 | 1981-07-19 | 1750 | NULL |     10 |       1 | THOMAS       | r50mpm     | 7032300011 |        0 |
+|  7499 | ALLEN    | M      | SALESMAN            | 7698 | 1981-02-20 | 1600 |  300 |     30 |       4 | ALWAYS TESTE | sales@2017 | 7032300096 |        1 |
+|  7521 | WARD     | M      | SALESMAN            | 7698 | 1981-02-22 | 1250 |  500 |     30 |       1 | WARD         | sales@2017 | 7132300034 |        1 |
+|  7566 | JONES    | M      | MANAGER             | 7839 | 1981-04-02 | 2975 | NULL |     20 |       4 | HONEYCOMB    | a12recmpm  | 7132300039 |        1 |
+|  7654 | MARTIN   | M      | SALESMAN            | 7698 | 1981-09-28 | 1250 | 1400 |     30 |       6 | LIFE RACER   | sales@2017 | 7132300050 |        1 |
+|  7698 | BLAKE    | M      | MANAGER             | 7839 | 1981-05-01 | 2850 | NULL |     30 |       1 | BIG BEN      | sales@2017 | 7132300027 |        1 |
+|  7782 | CLARK    | M      | MANAGER             | 7839 | 1981-06-09 | 2450 | NULL |     10 |       3 | CLARK        | r50mpm     | 7032300001 |        1 |
+|  7788 | SCOTT    | M      | ANALYST             | 7566 | 1982-12-09 | 3000 | NULL |     20 |       3 | WHITE SAND   | a12recmpm  | NULL       |        1 |
+|  7839 | KING     | M      | PRESIDENT           | NULL | 1981-11-17 | 5000 | NULL |     10 |       1 | KING         | r50mpm     | 7132300081 |        1 |
+|  7840 | FRED     | M      | vice PRESIDENT      | 7839 | 1983-08-09 | 5000 | NULL |     20 |       1 | SAND STONE   | a12recmpm  | NULL       |        1 |
+|  7844 | TURNER   | M      | SALESMAN            | 7698 | 1981-09-08 | 1500 |    0 |     30 |       5 | SAND DUST    | sales@2017 | NULL       |        1 |
+|  7876 | ADAMS    | M      | CLERK               | 7788 | 1983-01-12 | 1100 | NULL |     20 |       1 | CRAZY ANYONE | a12recmpm  | 7132300086 |        1 |
+|  7900 | JAMES    | M      | CLERK               | 7698 | 1981-12-03 |  950 | NULL |     30 |       2 | CRAZY LEADER | sales@2017 | 7132300042 |        1 |
+|  7902 | FORD     | M      | ANALYST             | 7566 | 1981-12-03 | 3000 | NULL |     20 |       4 | CONBRIO      | a12recmpm  | NULL       |        0 |
+|  7919 | HOFFMAN  | M      | MANAGER             | 7566 | 1982-03-24 | 4150 | NULL |     30 |       3 | INTERVAL     | sales@2017 | NULL       |        1 |
+|  7920 | GRASS    | M      | SALESMAN            | 7919 | 1980-02-14 | 2575 | 2700 |     30 |       5 | GRASS        | sales@2017 | NULL       |        1 |
+|  7934 | MILLER   | M      | CLERK               | 7782 | 1982-01-23 | 1300 | NULL |     10 |       2 | QUARTERNOTE  | r50mpm     | 7132300055 |        0 |
+|  7945 | AARUSH   | M      | SALESMAN            | 7902 | 1980-02-14 | 1350 | 2700 |     30 |    NULL | AARUSH       | ABCDEF     | NULL       |        0 |
+|  7949 | ALEX     | M      | MANAGER             | 7698 | 1982-01-24 | 1250 |  500 |     30 |       5 | QUARTERREST  | sales@2017 | 7156567183 |        1 |
+|  8433 | NATASHA  | F      | CLERK               | 7920 | 1981-07-19 | 1750 | NULL |     30 |       1 | NATASHA      | sales@2017 | NULL       |        1 |
+|  9400 | SANGITA  | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | SANGITA      | NULL       | NULL       |        1 |
+|  9473 | SUPRIYA  | F      | ANALYST             | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | SUPRIYA      | XYZ@1234   | NULL       |        1 |
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+28 rows in set (0.00 sec)
+
+mysql> create view v1 as select empno, ename, job, sal, comm, deptno from emp where deptno=10;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create view v2 as select empno, ename, job, sal, comm, deptno from emp where deptno=20;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from v1;
++-------+--------+-----------+------+------+--------+
+| empno | ename  | job       | sal  | comm | deptno |
++-------+--------+-----------+------+------+--------+
+|  7415 | AARAV  | CLERK     | 3350 | NULL |     10 |
+|  7421 | THOMAS | CLERK     | 1750 | NULL |     10 |
+|  7782 | CLARK  | MANAGER   | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | 5000 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 1300 | NULL |     10 |
++-------+--------+-----------+------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from v2;
++-------+---------+-----------------+------+------+--------+
+| empno | ename   | job             | sal  | comm | deptno |
++-------+---------+-----------------+------+------+--------+
+|  6473 | SHARMIN | Public Relation | 1750 | NULL |     20 |
+|  6781 | BANDISH | Public Relation | 1750 | NULL |     20 |
+|  7369 | SMITH   | CLERK           |  800 | NULL |     20 |
+|  7566 | JONES   | MANAGER         | 2975 | NULL |     20 |
+|  7788 | SCOTT   | ANALYST         | 3000 | NULL |     20 |
+|  7840 | FRED    | vice PRESIDENT  | 5000 | NULL |     20 |
+|  7876 | ADAMS   | CLERK           | 1100 | NULL |     20 |
+|  7902 | FORD    | ANALYST         | 3000 | NULL |     20 |
++-------+---------+-----------------+------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql>  select empno, ename, job, sal, comm, deptno from emp;
++-------+----------+---------------------+------+------+--------+
+| empno | ename    | job                 | sal  | comm | deptno |
++-------+----------+---------------------+------+------+--------+
+|  6001 | GITA     | Compliance officers | 1750 | NULL |     30 |
+|  6129 | VRUSHALI | Compliance officers | 1750 | NULL |     50 |
+|  6473 | SHARMIN  | Public Relation     | 1750 | NULL |     20 |
+|  6781 | BANDISH  | Public Relation     | 1750 | NULL |     20 |
+|  7369 | SMITH    | CLERK               |  800 | NULL |     20 |
+|  7415 | AARAV    | CLERK               | 3350 | NULL |     10 |
+|  7421 | THOMAS   | CLERK               | 1750 | NULL |     10 |
+|  7499 | ALLEN    | SALESMAN            | 1600 |  300 |     30 |
+|  7521 | WARD     | SALESMAN            | 1250 |  500 |     30 |
+|  7566 | JONES    | MANAGER             | 2975 | NULL |     20 |
+|  7654 | MARTIN   | SALESMAN            | 1250 | 1400 |     30 |
+|  7698 | BLAKE    | MANAGER             | 2850 | NULL |     30 |
+|  7782 | CLARK    | MANAGER             | 2450 | NULL |     10 |
+|  7788 | SCOTT    | ANALYST             | 3000 | NULL |     20 |
+|  7839 | KING     | PRESIDENT           | 5000 | NULL |     10 |
+|  7840 | FRED     | vice PRESIDENT      | 5000 | NULL |     20 |
+|  7844 | TURNER   | SALESMAN            | 1500 |    0 |     30 |
+|  7876 | ADAMS    | CLERK               | 1100 | NULL |     20 |
+|  7900 | JAMES    | CLERK               |  950 | NULL |     30 |
+|  7902 | FORD     | ANALYST             | 3000 | NULL |     20 |
+|  7919 | HOFFMAN  | MANAGER             | 4150 | NULL |     30 |
+|  7920 | GRASS    | SALESMAN            | 2575 | 2700 |     30 |
+|  7934 | MILLER   | CLERK               | 1300 | NULL |     10 |
+|  7945 | AARUSH   | SALESMAN            | 1350 | 2700 |     30 |
+|  7949 | ALEX     | MANAGER             | 1250 |  500 |     30 |
+|  8433 | NATASHA  | CLERK               | 1750 | NULL |     30 |
+|  9400 | SANGITA  | Compliance officers | 1750 | NULL |     50 |
+|  9473 | SUPRIYA  | ANALYST             | 1750 | NULL |     50 |
++-------+----------+---------------------+------+------+--------+
+28 rows in set (0.00 sec)
+
+mysql>  select empno, ename, job, sal, comm, deptno from emp where deptno=20;
++-------+---------+-----------------+------+------+--------+
+| empno | ename   | job             | sal  | comm | deptno |
++-------+---------+-----------------+------+------+--------+
+|  6473 | SHARMIN | Public Relation | 1750 | NULL |     20 |
+|  6781 | BANDISH | Public Relation | 1750 | NULL |     20 |
+|  7369 | SMITH   | CLERK           |  800 | NULL |     20 |
+|  7566 | JONES   | MANAGER         | 2975 | NULL |     20 |
+|  7788 | SCOTT   | ANALYST         | 3000 | NULL |     20 |
+|  7840 | FRED    | vice PRESIDENT  | 5000 | NULL |     20 |
+|  7876 | ADAMS   | CLERK           | 1100 | NULL |     20 |
+|  7902 | FORD    | ANALYST         | 3000 | NULL |     20 |
++-------+---------+-----------------+------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql>  select empno, ename, job, sal, comm, deptno from emp where deptno=20;
++-------+---------+-----------------+------+------+--------+
+| empno | ename   | job             | sal  | comm | deptno |
++-------+---------+-----------------+------+------+--------+
+|  6473 | SHARMIN | Public Relation | 1750 | NULL |     20 |
+|  6781 | BANDISH | Public Relation | 1750 | NULL |     20 |
+|  7369 | SMITH   | CLERK           |  800 | NULL |     20 |
+|  7566 | JONES   | MANAGER         | 2975 | NULL |     20 |
+|  7788 | SCOTT   | ANALYST         | 3000 | NULL |     20 |
+|  7840 | FRED    | vice PRESIDENT  | 5000 | NULL |     20 |
+|  7876 | ADAMS   | CLERK           | 1100 | NULL |     20 |
+|  7902 | FORD    | ANALYST         | 3000 | NULL |     20 |
++-------+---------+-----------------+------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from v1;
++-------+--------+-----------+------+------+--------+
+| empno | ename  | job       | sal  | comm | deptno |
++-------+--------+-----------+------+------+--------+
+|  7415 | AARAV  | CLERK     | 3350 | NULL |     10 |
+|  7421 | THOMAS | CLERK     | 1750 | NULL |     10 |
+|  7782 | CLARK  | MANAGER   | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | 5000 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 1300 | NULL |     10 |
++-------+--------+-----------+------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> use db2;
+Database changed
+mysql> show tbales;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tbales' at line 1
+mysql> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| a             |
+| d             |
+| dept          |
+| v1            |
+| v2            |
+| v3            |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from v3;
+Empty set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
++--------+------------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from d;
+Empty set (0.00 sec)
+
+mysql> desc d;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into d values(1,1,1),(2,2,2);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from v3;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 |    1 |
+|    2 |    2 |
++------+------+
+2 rows in set (0.00 sec)
+
+mysql> grant select, insert on db2.v3 to 'abc'@'%';
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from d;
++------+------+------+
+| c1   | c2   | c3   |
++------+------+------+
+|    1 |    1 |    1 |
+|    2 |    2 |    2 |
+|    3 |    3 | NULL |
++------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from d;
++------+------+------+
+| c1   | c2   | c3   |
++------+------+------+
+|    1 |    1 |    1 |
+|    2 |    2 |    2 |
+|    3 |    3 | NULL |
+|   -1 |   -6 | NULL |
++------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> create view v4 as select job, max(sal) from emp;
+ERROR 1146 (42S02): Table 'db2.emp' doesn't exist
+mysql> create view v4 as select job, max(sal) from db1.emp;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create view v5 as select job, max(sal) R1 from db1.emp;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc v3;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc v4;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job      | varchar(20) | YES  |     | NULL    |       |
+| max(sal) | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc v5;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| job   | varchar(20) | YES  |     | NULL    |       |
+| R1    | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select max(sal) from v4;
+ERROR 1054 (42S22): Unknown column 'sal' in 'field list'
+mysql>
+mysql>
+mysql> select `max(sal)` from v4;
++----------+
+| max(sal) |
++----------+
+|     5000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> desc v4;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| job      | varchar(20) | YES  |     | NULL    |       |
+| max(sal) | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> insert into v4 values('xyz', 4000);
+ERROR 1471 (HY000): The target table v4 of the INSERT is not insertable-into
+mysql>
+mysql>
+mysql>
+mysql> use db1;
+Database changed
+mysql>  select empno, ename, job, sal, comm, deptno from emp;
++-------+----------+---------------------+------+------+--------+
+| empno | ename    | job                 | sal  | comm | deptno |
++-------+----------+---------------------+------+------+--------+
+|  6001 | GITA     | Compliance officers | 1750 | NULL |     30 |
+|  6129 | VRUSHALI | Compliance officers | 1750 | NULL |     50 |
+|  6473 | SHARMIN  | Public Relation     | 1750 | NULL |     20 |
+|  6781 | BANDISH  | Public Relation     | 1750 | NULL |     20 |
+|  7369 | SMITH    | CLERK               |  800 | NULL |     20 |
+|  7415 | AARAV    | CLERK               | 3350 | NULL |     10 |
+|  7421 | THOMAS   | CLERK               | 1750 | NULL |     10 |
+|  7499 | ALLEN    | SALESMAN            | 1600 |  300 |     30 |
+|  7521 | WARD     | SALESMAN            | 1250 |  500 |     30 |
+|  7566 | JONES    | MANAGER             | 2975 | NULL |     20 |
+|  7654 | MARTIN   | SALESMAN            | 1250 | 1400 |     30 |
+|  7698 | BLAKE    | MANAGER             | 2850 | NULL |     30 |
+|  7782 | CLARK    | MANAGER             | 2450 | NULL |     10 |
+|  7788 | SCOTT    | ANALYST             | 3000 | NULL |     20 |
+|  7839 | KING     | PRESIDENT           | 5000 | NULL |     10 |
+|  7840 | FRED     | vice PRESIDENT      | 5000 | NULL |     20 |
+|  7844 | TURNER   | SALESMAN            | 1500 |    0 |     30 |
+|  7876 | ADAMS    | CLERK               | 1100 | NULL |     20 |
+|  7900 | JAMES    | CLERK               |  950 | NULL |     30 |
+|  7902 | FORD     | ANALYST             | 3000 | NULL |     20 |
+|  7919 | HOFFMAN  | MANAGER             | 4150 | NULL |     30 |
+|  7920 | GRASS    | SALESMAN            | 2575 | 2700 |     30 |
+|  7934 | MILLER   | CLERK               | 1300 | NULL |     10 |
+|  7945 | AARUSH   | SALESMAN            | 1350 | 2700 |     30 |
+|  7949 | ALEX     | MANAGER             | 1250 |  500 |     30 |
+|  8433 | NATASHA  | CLERK               | 1750 | NULL |     30 |
+|  9400 | SANGITA  | Compliance officers | 1750 | NULL |     50 |
+|  9473 | SUPRIYA  | ANALYST             | 1750 | NULL |     50 |
++-------+----------+---------------------+------+------+--------+
+28 rows in set (0.00 sec)
+
+mysql> explain  select empno, ename, job, sal, comm, deptno from emp;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.02 sec)
+
+mysql>  select empno, ename, job, sal, comm, deptno from emp where ename='smith';
++-------+-------+-------+------+------+--------+
+| empno | ename | job   | sal  | comm | deptno |
++-------+-------+-------+------+------+--------+
+|  7369 | SMITH | CLERK |  800 | NULL |     20 |
++-------+-------+-------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> explain select empno, ename, job, sal, comm, deptno from emp where ename='smith';
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select empno, ename, job, sal, comm, deptno from emp where empno=7788;
++-------+-------+---------+------+------+--------+
+| empno | ename | job     | sal  | comm | deptno |
++-------+-------+---------+------+------+--------+
+|  7788 | SCOTT | ANALYST | 3000 | NULL |     20 |
++-------+-------+---------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> explain select empno, ename, job, sal, comm, deptno from emp where empno=7788;
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> use db2;
+Database changed
+mysql> create table i (c1 int primary key, c2 int);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into i valeus(10, 10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'valeus(10, 10)' at line 1
+mysql> insert into i values(10, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i values(7, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i values(1, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i values(21, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i values(17, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from i;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 |   10 |
+|  7 |   10 |
+| 10 |   10 |
+| 17 |   10 |
+| 21 |   10 |
++----+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into i values(6, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from i;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 |   10 |
+|  6 |   10 |
+|  7 |   10 |
+| 10 |   10 |
+| 17 |   10 |
+| 21 |   10 |
++----+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from i where c2=10;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 |   10 |
+|  6 |   10 |
+|  7 |   10 |
+| 10 |   10 |
+| 17 |   10 |
+| 21 |   10 |
++----+------+
+6 rows in set (0.00 sec)
+
+mysql> explain select * from i where c2=10;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | i     | NULL       | ALL  | NULL          | NULL | NULL    | NULL |    6 |    16.67 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select * from i where c1=7;
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | i     | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> use db1;
+Database changed
+mysql> select empno, ename, job, sal, comm, deptno from emp;
++-------+----------+---------------------+------+------+--------+
+| empno | ename    | job                 | sal  | comm | deptno |
++-------+----------+---------------------+------+------+--------+
+|  6001 | GITA     | Compliance officers | 1750 | NULL |     30 |
+|  6129 | VRUSHALI | Compliance officers | 1750 | NULL |     50 |
+|  6473 | SHARMIN  | Public Relation     | 1750 | NULL |     20 |
+|  6781 | BANDISH  | Public Relation     | 1750 | NULL |     20 |
+|  7369 | SMITH    | CLERK               |  800 | NULL |     20 |
+|  7415 | AARAV    | CLERK               | 3350 | NULL |     10 |
+|  7421 | THOMAS   | CLERK               | 1750 | NULL |     10 |
+|  7499 | ALLEN    | SALESMAN            | 1600 |  300 |     30 |
+|  7521 | WARD     | SALESMAN            | 1250 |  500 |     30 |
+|  7566 | JONES    | MANAGER             | 2975 | NULL |     20 |
+|  7654 | MARTIN   | SALESMAN            | 1250 | 1400 |     30 |
+|  7698 | BLAKE    | MANAGER             | 2850 | NULL |     30 |
+|  7782 | CLARK    | MANAGER             | 2450 | NULL |     10 |
+|  7788 | SCOTT    | ANALYST             | 3000 | NULL |     20 |
+|  7839 | KING     | PRESIDENT           | 5000 | NULL |     10 |
+|  7840 | FRED     | vice PRESIDENT      | 5000 | NULL |     20 |
+|  7844 | TURNER   | SALESMAN            | 1500 |    0 |     30 |
+|  7876 | ADAMS    | CLERK               | 1100 | NULL |     20 |
+|  7900 | JAMES    | CLERK               |  950 | NULL |     30 |
+|  7902 | FORD     | ANALYST             | 3000 | NULL |     20 |
+|  7919 | HOFFMAN  | MANAGER             | 4150 | NULL |     30 |
+|  7920 | GRASS    | SALESMAN            | 2575 | 2700 |     30 |
+|  7934 | MILLER   | CLERK               | 1300 | NULL |     10 |
+|  7945 | AARUSH   | SALESMAN            | 1350 | 2700 |     30 |
+|  7949 | ALEX     | MANAGER             | 1250 |  500 |     30 |
+|  8433 | NATASHA  | CLERK               | 1750 | NULL |     30 |
+|  9400 | SANGITA  | Compliance officers | 1750 | NULL |     50 |
+|  9473 | SUPRIYA  | ANALYST             | 1750 | NULL |     50 |
++-------+----------+---------------------+------+------+--------+
+28 rows in set (0.00 sec)
+
+mysql> explain select empno, ename, job, sal, comm, deptno from emp where enme='smith';
+ERROR 1054 (42S22): Unknown column 'enme' in 'where clause'
+mysql> explain select empno, ename, job, sal, comm, deptno from emp where ename='smith';
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> create index ind1 on emp(ename);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from emp;
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name               | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| emp   |          0 | PRIMARY                |            1 | EMPNO       | A         |          28 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_deptno |            1 | DEPTNO      | A         |           4 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_mgr    |            1 | MGR         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | ind1                   |            1 | ENAME       | A         |          28 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+4 rows in set (0.03 sec)
+
+mysql> explain select empno, ename, job, sal, comm, deptno from emp where ename='smith';
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | ref  | ind1          | ind1 | 51      | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql>  select empno, ename, job, sal, comm, deptno from emp where ename='smith';
++-------+-------+-------+------+------+--------+
+| empno | ename | job   | sal  | comm | deptno |
++-------+-------+-------+------+------+--------+
+|  7369 | SMITH | CLERK |  800 | NULL |     20 |
++-------+-------+-------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> use db2;
+Database changed
+mysql> create table i1 (c1 int, c2 varchar(10));
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> insert into i1 values(1,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i1 values(2,'omkar');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i1 values(3,'rahul');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i1 values(4,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from i1;
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | saleel |
+|    2 | omkar  |
+|    3 | rahul  |
+|    4 | saleel |
++------+--------+
+4 rows in set (0.00 sec)
+
+mysql> create index ind2 on i1(c2);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from i1;;
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | saleel |
+|    2 | omkar  |
+|    3 | rahul  |
+|    4 | saleel |
++------+--------+
+4 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> select * from i1 where c2='saleel';
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | saleel |
+|    4 | saleel |
++------+--------+
+2 rows in set (0.00 sec)
+
+mysql> explain select * from i1 where c2='saleel';
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | i1    | NULL       | ref  | ind2          | ind2 | 43      | const |    2 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> create table i2 (c1 int, c2 varchar(10));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc i2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create unique index ind3 on i2(c2);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc i2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show index from i2;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| i2    |          0 | ind3     |            1 | c2          | A         |           0 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into i2 values(1,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i2 values(10,10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i2 values(5,5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into i2 values(5,5);
+ERROR 1062 (23000): Duplicate entry '5' for key 'i2.ind3'
+mysql> select * from i2;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 | 1    |
+|   10 | 10   |
+|    5 | 5    |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> show index from i2;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| i2    |          0 | ind3     |            1 | c2          | A         |           2 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from i2;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 | 1    |
+|   10 | 10   |
+|    5 | 5    |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> alter table i1 change c2 c3 varchar(10);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc i2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table i2 change c2 c3 varchar(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc i2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c3    | varchar(10) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show index from i2;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| i2    |          0 | ind3     |            1 | c3          | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table i1 change c3 c2 varchar(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table i2 change c3 c2 varchar(10);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc i2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show index from i2;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| i2    |          0 | ind3     |            1 | c2          | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table i2 drop c2;
+Query OK, 0 rows affected (0.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from i2;
+Empty set (0.00 sec)
+
+mysql>
