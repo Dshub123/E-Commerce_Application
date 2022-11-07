@@ -4,7 +4,11 @@ Hello
 HIIIII
 BYeeeeeeeeeeeeeeeeeeeeee
 eeeeeeeeeeeeeeeewwwwwwwwwwwwwwwwwwwwwwwwwwww
+<<<<<<< HEAD
 111111111111111111111111111
 222222222222222222222222222
 333333333333333333333333
 4444444444444444444444444
+=======
+hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+>>>>>>> 4d72b19b137f96e26bb501506aaa0044db677b8e
