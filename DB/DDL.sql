@@ -1,0 +1,1 @@
+create table Roles (rollid int primary key auto_increment,   title varchar(20) );
